@@ -9,7 +9,6 @@ Source0:	http://teon.org/projects/AddUser-NG/download/release-%{version}/source/
 # Source0-md5:	fcc20b96e4556c0a7c06b19337ec8e54
 Patch0:		%{name}-Makefile.patch
 URL:		http://adduser.linux.pl
-Requires:	bash >= 2.0
 Requires:	perl-Config-IniFiles
 Requires:	perl-Getopt-Mixed
 Requires:	perl-XML-Simple
