@@ -1,4 +1,4 @@
-%include        /usr/lib/rpm/macros.perl
+%include	/usr/lib/rpm/macros.perl
 Summary:	AddUser-NG for UNIX
 Summary(pl):	AddUser-NG dla systemów UNIX
 Name:		adduser-ng
@@ -24,9 +24,8 @@ replacement for adduser script. Most of all it's useful for system
 administrators, which create a lot of users' accounts with the same
 characteristics. It's written in perl with flexibility and modularity
 kept in mind. Major advantages:
-
-    - built-in plugins for user and groups administration,
-    - set of different User Interfaces.
+- built-in plugins for user and groups administration,
+- set of different User Interfaces.
 
 %description -l pl
 AddUser-NG oznacza AddUser Next Generation, czyli nastêpna generacja
@@ -36,11 +35,10 @@ tworz± du¿o kont o powtarzaj±cych siê w³a¶ciwo¶ciach. Jest tak¿e
 napisany w perlu, ale zosta³ zaprojektowany aby by³ bardziej
 elastyczny, posiada³ wiêksze mo¿liwo¶ci konfiguracji oraz by³
 modularny:
-
-    - posiada wtyczki do administracji u¿ytkownikami oraz grupami,
-    - posiada ró¿ne interfejsy u¿ytkownika (UI),
-    - posiada dobr± dokumentacjê (równie¿ na temat jak pisaæ w³asne
-      wtyczki).
+- posiada wtyczki do administracji u¿ytkownikami oraz grupami,
+- posiada ró¿ne interfejsy u¿ytkownika (UI),
+- posiada dobr± dokumentacjê (równie¿ na temat jak pisaæ w³asne
+  wtyczki).
 
 %prep
 %setup -q -n %{name}
