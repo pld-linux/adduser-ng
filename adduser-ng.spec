@@ -30,7 +30,7 @@ kept in mind. Major advantages:
 %description -l pl
 AddUser-NG oznacza AddUser Next Generation, czyli nastêpna generacja
 skryptu adduser. S³u¿y on do zak³adania kont u¿ytkownikom w systemach
-unixowych. Przede wszystkim u¿yteczny dla administratorów, którzy
+uniksowych. Przede wszystkim u¿yteczny dla administratorów, którzy
 tworz± du¿o kont o powtarzaj±cych siê w³a¶ciwo¶ciach. Jest tak¿e
 napisany w perlu, ale zosta³ zaprojektowany aby by³ bardziej
 elastyczny, posiada³ wiêksze mo¿liwo¶ci konfiguracji oraz by³
