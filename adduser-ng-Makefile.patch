@@ -1,0 +1,186 @@
+diff -burN adduser-ng.orig/Makefile adduser-ng/Makefile
+--- adduser-ng.orig/Makefile	2003-11-09 23:10:00.000000000 +0100
++++ adduser-ng/Makefile	2004-03-22 15:15:26.884929264 +0100
+@@ -4,8 +4,8 @@
+ 
+ PREFIX=/usr
+ CONFIG_PREFIX=
+-USER_DOCS_DIR=$(PREFIX)/share/doc/adduser-ng
+-DEVEL_DOCS_DIR=$(PREFIX)/share/doc/adduser-ng
++USER_DOCS_DIR=$(DESTDIR)$(PREFIX)/share/doc/adduser-ng
++DEVEL_DOCS_DIR=$(DESTDIR)$(PREFIX)/share/doc/adduser-ng
+ 
+ # if package will not be specified, use adduser-ng
+ PACKAGE=adduser-ng
+@@ -35,107 +35,107 @@
+ install_adduser: build_adduser
+ 	#
+ 	# adduser-ng package installation
+-	install -o root -g root -m 755 -d $(PREFIX)/sbin
+-	install -o root -g root -m 755 -d $(PREFIX)/share/adduser-ng/plugins
+-	install -o root -g root -m 755 -d $(CONFIG_PREFIX)/etc/adduser-ng
+-	install -o root -g root -m 755 -d $(PREFIX)/share/perl5/AddUser
+-	install -o root -g root -m 755 -d $(PREFIX)/share/perl5/AddUser/plugins
+-	install -o root -g root -m 755 -d $(PREFIX)/share/perl5/AddUser/UI
+-	install -o root -g root -m 755 -d $(PREFIX)/share/doc/$(PACKAGE)
+-
+-	install -o root -g root -m 755 adduser $(PREFIX)/sbin/adduser-ng
+-	install -o root -g root -m 644 Docs/plugins/UserAdd.xml $(PREFIX)/share/adduser-ng/plugins/
+-	install -o root -g root -m 644 Docs/plugins/GroupAdd.xml $(PREFIX)/share/adduser-ng/plugins/
+-	install -o root -g root -m 644 Docs/plugins/PasswdUser.xml $(PREFIX)/share/adduser-ng/plugins/
+-	install -o root -g root -m 644 adduser-ng/adduser-ng.conf-dist $(CONFIG_PREFIX)/etc/adduser-ng/adduser-ng.conf
++	install -d $(DESTDIR)$(PREFIX)/sbin
++	install -d $(DESTDIR)$(PREFIX)/share/adduser-ng/plugins
++	install -d $(DESTDIR)$(CONFIG_PREFIX)/etc/adduser-ng
++	install -d $(DESTDIR)$(PREFIX)/share/perl5/AddUser
++	install -d $(DESTDIR)$(PREFIX)/share/perl5/AddUser/plugins
++	install -d $(DESTDIR)$(PREFIX)/share/perl5/AddUser/UI
++	install -d $(DESTDIR)$(PREFIX)/share/doc/$(PACKAGE)
++
++	install adduser $(DESTDIR)$(PREFIX)/sbin/adduser-ng
++	install Docs/plugins/UserAdd.xml $(DESTDIR)$(PREFIX)/share/adduser-ng/plugins/
++	install Docs/plugins/GroupAdd.xml $(DESTDIR)$(PREFIX)/share/adduser-ng/plugins/
++	install Docs/plugins/PasswdUser.xml $(DESTDIR)$(PREFIX)/share/adduser-ng/plugins/
++	install adduser-ng/adduser-ng.conf-dist $(DESTDIR)$(CONFIG_PREFIX)/etc/adduser-ng/adduser-ng.conf
+ 	# plugins
+-	install -o root -g root -m 644 lib/AddUser/StdLib.pm $(PREFIX)/share/perl5/AddUser/
+-	install -o root -g root -m 644 lib/AddUser/GroupConfig.pm $(PREFIX)/share/perl5/AddUser/
+-	install -o root -g root -m 644 lib/AddUser/plugins/UserAdd.pm $(PREFIX)/share/perl5/AddUser/plugins/
+-	install -o root -g root -m 644 lib/AddUser/plugins/GroupAdd.pm $(PREFIX)/share/perl5/AddUser/plugins/
+-	install -o root -g root -m 644 lib/AddUser/plugins/PasswdUser.pm $(PREFIX)/share/perl5/AddUser/plugins/
++	install lib/AddUser/StdLib.pm $(DESTDIR)$(PREFIX)/share/perl5/AddUser/
++	install lib/AddUser/GroupConfig.pm $(DESTDIR)$(PREFIX)/share/perl5/AddUser/
++	install lib/AddUser/plugins/UserAdd.pm $(DESTDIR)$(PREFIX)/share/perl5/AddUser/plugins/
++	install lib/AddUser/plugins/GroupAdd.pm $(DESTDIR)$(PREFIX)/share/perl5/AddUser/plugins/
++	install lib/AddUser/plugins/PasswdUser.pm $(DESTDIR)$(PREFIX)/share/perl5/AddUser/plugins/
+ 	# UI
+-	install -o root -g root -m 644 lib/AddUser/UI/batch.pm $(PREFIX)/share/perl5/AddUser/UI/
+-	install -o root -g root -m 644 lib/AddUser/UI/readline.pm $(PREFIX)/share/perl5/AddUser/UI/
++	install lib/AddUser/UI/batch.pm $(DESTDIR)$(PREFIX)/share/perl5/AddUser/UI/
++	install lib/AddUser/UI/readline.pm $(DESTDIR)$(PREFIX)/share/perl5/AddUser/UI/
+ 	# documentation
+-	xalan -IN Docs/plugins/UserAdd.xml -XSL Docs/plugins-to-html.xsl -OUT $(PREFIX)/share/doc/$(PACKAGE)/UserAdd.html
+-	xalan -IN Docs/plugins/GroupAdd.xml -XSL Docs/plugins-to-html.xsl -OUT $(PREFIX)/share/doc/$(PACKAGE)/GroupAdd.html
+-	xalan -IN Docs/plugins/PasswdUser.xml -XSL Docs/plugins-to-html.xsl -OUT $(PREFIX)/share/doc/$(PACKAGE)/PasswdUser.html
++	#xalan -IN Docs/plugins/UserAdd.xml -XSL Docs/plugins-to-html.xsl -OUT $(DESTDIR)$(PREFIX)/share/doc/$(PACKAGE)/UserAdd.html
++	#xalan -IN Docs/plugins/GroupAdd.xml -XSL Docs/plugins-to-html.xsl -OUT $(DESTDIR)$(PREFIX)/share/doc/$(PACKAGE)/GroupAdd.html
++	#xalan -IN Docs/plugins/PasswdUser.xml -XSL Docs/plugins-to-html.xsl -OUT $(DESTDIR)$(PREFIX)/share/doc/$(PACKAGE)/PasswdUser.html
+ 
+ generate_docs:
+ 	scripts/generate_docs.sh all Docs/user_polish.xml Docs/
+ 	scripts/generate_docs.sh all Docs/developer_polish.xml Docs/
+ 
+ install_docs:
+-	install -o root -g root -m 644 Docs/user_polish/* $(USER_DOCS_DIR)
+-	install -o root -g root -m 644 Docs/developer_polish/* $(DEVEL_DOCS_DIR)
++	install Docs/user_polish/* $(USER_DOCS_DIR)
++	install Docs/developer_polish/* $(DEVEL_DOCS_DIR)
+ 
+ install_pluginloader:
+ 	#
+ 	# libadduser-pluginloader
+-	install -o root -g root -m 755 -d $(PREFIX)/share/perl5/AddUser
+-	install -o root -g root -m 644 lib/AddUser/PluginLoader.pm $(PREFIX)/share/perl5/AddUser/
++	install -d $(DESTDIR)$(PREFIX)/share/perl5/AddUser
++	install lib/AddUser/PluginLoader.pm $(DESTDIR)$(PREFIX)/share/perl5/AddUser/
+ 
+ install_uicdk:
+ 	#
+ 	# adduser-ui-cdk
+-	install -o root -g root -m 755 -d $(PREFIX)/share/perl5/AddUser/UI
+-	install -o root -g root -m 644 lib/AddUser/UI/cdk.pm $(PREFIX)/share/perl5/AddUser/UI/
++	install -d $(DESTDIR)$(PREFIX)/share/perl5/AddUser/UI
++	install lib/AddUser/UI/cdk.pm $(DESTDIR)$(PREFIX)/share/perl5/AddUser/UI/
+ 
+ install_pluginquota:
+ 	#
+ 	# adduser-plugin-quota
+-	install -o root -g root -m 755 -d $(PREFIX)/share/adduser-ng/plugins
+-	install -o root -g root -m 755 -d $(PREFIX)/share/perl5/AddUser/plugins
+-	install -o root -g root -m 755 -d $(PREFIX)/share/doc/$(PACKAGE)
+-
+-	install -o root -g root -m 644 Docs/plugins/Quota.xml $(PREFIX)/share/adduser-ng/plugins/
+-	install -o root -g root -m 644 lib/AddUser/plugins/Quota.pm $(PREFIX)/share/perl5/AddUser/plugins/
+-	xalan -IN Docs/plugins/Quota.xml -XSL Docs/plugins-to-html.xsl -OUT $(PREFIX)/share/doc/$(PACKAGE)/Quota.html
++	install -d $(DESTDIR)$(PREFIX)/share/adduser-ng/plugins
++	install -d $(DESTDIR)$(PREFIX)/share/perl5/AddUser/plugins
++	install -d $(DESTDIR)$(PREFIX)/share/doc/$(PACKAGE)
++
++	install Docs/plugins/Quota.xml $(DESTDIR)$(PREFIX)/share/adduser-ng/plugins/
++	install lib/AddUser/plugins/Quota.pm $(DESTDIR)$(PREFIX)/share/perl5/AddUser/plugins/
++	#xalan -IN Docs/plugins/Quota.xml -XSL Docs/plugins-to-html.xsl -OUT $(DESTDIR)$(PREFIX)/share/doc/$(PACKAGE)/Quota.html
+ 
+ install_pluginnotifyjabber:
+ 	#
+ 	# adduser-plugin-notifyjabber
+-	install -o root -g root -m 755 -d $(PREFIX)/share/adduser-ng/plugins
+-	install -o root -g root -m 755 -d $(PREFIX)/share/perl5/AddUser/plugins
+-	install -o root -g root -m 755 -d $(PREFIX)/share/doc/$(PACKAGE)
+-
+-	install -o root -g root -m 644 Docs/plugins/NotifyJabber.xml $(PREFIX)/share/adduser-ng/plugins/
+-	install -o root -g root -m 644 lib/AddUser/plugins/NotifyJabber.pm $(PREFIX)/share/perl5/AddUser/plugins/
+-	xalan -IN Docs/plugins/NotifyJabber.xml -XSL Docs/plugins-to-html.xsl -OUT $(PREFIX)/share/doc/$(PACKAGE)/NotifyJabber.html
++	install -d $(DESTDIR)$(PREFIX)/share/adduser-ng/plugins
++	install -d $(DESTDIR)$(PREFIX)/share/perl5/AddUser/plugins
++	install -d $(DESTDIR)$(PREFIX)/share/doc/$(PACKAGE)
++
++	install Docs/plugins/NotifyJabber.xml $(DESTDIR)$(PREFIX)/share/adduser-ng/plugins/
++	install lib/AddUser/plugins/NotifyJabber.pm $(DESTDIR)$(PREFIX)/share/perl5/AddUser/plugins/
++	#xalan -IN Docs/plugins/NotifyJabber.xml -XSL Docs/plugins-to-html.xsl -OUT $(DESTDIR)$(PREFIX)/share/doc/$(PACKAGE)/NotifyJabber.html
+ 
+ install_plugincvsaccess:
+ 	#
+ 	# adduser-plugin-cvsaccess
+-	install -o root -g root -m 755 -d $(PREFIX)/share/adduser-ng/plugins
+-	install -o root -g root -m 755 -d $(PREFIX)/share/perl5/AddUser/plugins
+-	install -o root -g root -m 755 -d $(PREFIX)/share/doc/$(PACKAGE)
+-
+-	install -o root -g root -m 644 Docs/plugins/CVSAccess.xml $(PREFIX)/share/adduser-ng/plugins/
+-	install -o root -g root -m 644 lib/AddUser/plugins/CVSAccess.pm $(PREFIX)/share/perl5/AddUser/plugins/
+-	xalan -IN Docs/plugins/CVSAccess.xml -XSL Docs/plugins-to-html.xsl -OUT $(PREFIX)/share/doc/$(PACKAGE)/CVSAccess.html
++	install -d $(DESTDIR)$(PREFIX)/share/adduser-ng/plugins
++	install -d $(DESTDIR)$(PREFIX)/share/perl5/AddUser/plugins
++	install -d $(DESTDIR)$(PREFIX)/share/doc/$(PACKAGE)
++
++	install Docs/plugins/CVSAccess.xml $(DESTDIR)$(PREFIX)/share/adduser-ng/plugins/
++	install lib/AddUser/plugins/CVSAccess.pm $(DESTDIR)$(PREFIX)/share/perl5/AddUser/plugins/
++	#xalan -IN Docs/plugins/CVSAccess.xml -XSL Docs/plugins-to-html.xsl -OUT $(DESTDIR)$(PREFIX)/share/doc/$(PACKAGE)/CVSAccess.html
+ 
+ install_plugineximconf:
+ 	#
+ 	# adduser-plugin-eximconf
+-	install -o root -g root -m 755 -d $(PREFIX)/share/adduser-ng/plugins
+-	install -o root -g root -m 755 -d $(PREFIX)/share/perl5/AddUser/plugins
+-	install -o root -g root -m 755 -d $(PREFIX)/share/doc/$(PACKAGE)
+-
+-	install -o root -g root -m 644 Docs/plugins/EximConf.xml $(PREFIX)/share/adduser-ng/plugins/
+-	install -o root -g root -m 644 lib/AddUser/plugins/EximConf.pm $(PREFIX)/share/perl5/AddUser/plugins/
+-	xalan -IN Docs/plugins/EximConf.xml -XSL Docs/plugins-to-html.xsl -OUT $(PREFIX)/share/doc/$(PACKAGE)/EximConf.html
++	install -d $(DESTDIR)$(PREFIX)/share/adduser-ng/plugins
++	install -d $(DESTDIR)$(PREFIX)/share/perl5/AddUser/plugins
++	install -d $(DESTDIR)$(PREFIX)/share/doc/$(PACKAGE)
++
++	install Docs/plugins/EximConf.xml $(DESTDIR)$(PREFIX)/share/adduser-ng/plugins/
++	install lib/AddUser/plugins/EximConf.pm $(DESTDIR)$(PREFIX)/share/perl5/AddUser/plugins/
++	#xalan -IN Docs/plugins/EximConf.xml -XSL Docs/plugins-to-html.xsl -OUT $(DESTDIR)$(PREFIX)/share/doc/$(PACKAGE)/EximConf.html
+ 
+ install_plugineximconf4:
+ 	#
+ 	# adduser-plugin-eximconf4
+-	install -o root -g root -m 755 -d $(PREFIX)/share/adduser-ng/plugins
+-	install -o root -g root -m 755 -d $(PREFIX)/share/perl5/AddUser/plugins
+-	install -o root -g root -m 755 -d $(PREFIX)/share/doc/$(PACKAGE)
+-
+-	install -o root -g root -m 644 Docs/plugins/EximConf4.xml $(PREFIX)/share/adduser-ng/plugins/
+-	install -o root -g root -m 644 lib/AddUser/plugins/EximConf4.pm $(PREFIX)/share/perl5/AddUser/plugins/
+-	xalan -IN Docs/plugins/EximConf4.xml -XSL Docs/plugins-to-html.xsl -OUT $(PREFIX)/share/doc/$(PACKAGE)/EximConf.html
++	install -d $(DESTDIR)$(PREFIX)/share/adduser-ng/plugins
++	install -d $(DESTDIR)$(PREFIX)/share/perl5/AddUser/plugins
++	install -d $(DESTDIR)$(PREFIX)/share/doc/$(PACKAGE)
++
++	install Docs/plugins/EximConf4.xml $(DESTDIR)$(PREFIX)/share/adduser-ng/plugins/
++	install lib/AddUser/plugins/EximConf4.pm $(DESTDIR)$(PREFIX)/share/perl5/AddUser/plugins/
++	#xalan -IN Docs/plugins/EximConf4.xml -XSL Docs/plugins-to-html.xsl -OUT $(DESTDIR)$(PREFIX)/share/doc/$(PACKAGE)/EximConf.html
+ 
+ install_all_plugins: install_pluginloader install_uicdk install_pluginquota install_plugineximconf install_plugineximconf4 install_pluginnotifyjabber
+ 
