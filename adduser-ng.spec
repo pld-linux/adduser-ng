@@ -57,11 +57,6 @@ modularny:
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_libdir}/{UI,plugins},%{_sysconfdir}/%{name}/groups,%{_datadir}/%{name}/plugins}
-#install -d $RPM_BUILD_ROOT%{_libdir}
-#install -d $RPM_ILD_ROOT%{_libdir}/UI
-#install -d $RPM_BUILD_ROOT%{_libdir}/plugins
-#install -d $RPM_BUILD_ROOT%{_sysconfdir}/adduser-ng
-#install -d $RPM_BUILD_ROOT%{_sysconfdir}/adduser-ng/groups
 install adduser $RPM_BUILD_ROOT%{_bindir}
 install adduser-ng/adduser-ng.conf-dist $RPM_BUILD_ROOT%{_sysconfdir}/adduser-ng/adduser-ng.conf
 install adduser-ng/groups/adduser $RPM_BUILD_ROOT%{_sysconfdir}/adduser-ng/groups/
@@ -79,6 +74,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc Docs/*
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/*
-%{_datadir}/%{name}
+%dir %{_sysconfdir}/adduser-ng/
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/adduser-ng/adduser-ng.conf
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/adduser-ng/groups/adduser
+%{_datadir}/%{name}
