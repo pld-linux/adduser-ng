@@ -14,6 +14,7 @@ Requires:	perl-Config-IniFiles
 Requires:	perl-Getopt-Mixed
 Requires:	perl-XML-Simple
 Requires:	perl-Term-ReadLine-Perl
+Requires:	perl-base >= 1:5.8.0
 Requires:	shadow
 Obsoletes:	adduser
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
