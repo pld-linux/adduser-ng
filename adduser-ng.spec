@@ -2,12 +2,12 @@
 Summary:	AddUser-NG for UNIX
 Summary(pl):	AddUser-NG dla systemów UNIX
 Name:		adduser-ng
-Version:	0.1.1
-Release:	0.3
+Version:	0.1.2
+Release:	0.1
 License:	GPL v2
 Group:		Applications/System
-Source0:	http://teon.org/projects/AddUser-NG/download/release-%{version}/source/%{name}_%{version}-1.tar.gz
-# Source0-md5:	fcc20b96e4556c0a7c06b19337ec8e54
+Source0:	ftp://ftp.adduser.linux.pl/release-%{version}/source/%{name}_%{version}.tar.gz
+# Source0-md5:	038932880d52c1655d9d9da57068b2da
 Patch0:		%{name}-Makefile.patch
 URL:		http://adduser.linux.pl
 BuildRequires:	rpm-perlprov
