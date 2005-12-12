@@ -13,8 +13,8 @@ URL:		http://adduser.linux.pl
 BuildRequires:	rpm-perlprov
 Requires:	perl-Config-IniFiles
 Requires:	perl-Getopt-Mixed
-Requires:	perl-XML-Simple
 Requires:	perl-Term-ReadLine-Perl
+Requires:	perl-XML-Simple
 Requires:	perl-base >= 1:5.8.0
 Requires:	shadow
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -79,7 +79,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{perl_vendorlib}/AddUser
 %dir %{_sysconfdir}/adduser-ng
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/adduser-ng/adduser-ng.conf
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/adduser-ng/groups/adduser
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/adduser-ng/adduser-ng.conf
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/adduser-ng/groups/adduser
 %{_datadir}/%{name}
 %{_mandir}/man3/*
