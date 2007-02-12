@@ -1,6 +1,6 @@
 %include	/usr/lib/rpm/macros.perl
 Summary:	AddUser-NG for UNIX
-Summary(pl):	AddUser-NG dla systemów UNIX
+Summary(pl.UTF-8):   AddUser-NG dla systemÃ³w UNIX
 Name:		adduser-ng
 Version:	0.1.2
 Release:	0.1
@@ -29,17 +29,17 @@ kept in mind. Major advantages:
 - set of different User Interfaces,
 - good documentation including plugins writting howto.
 
-%description -l pl
-AddUser-NG oznacza AddUser Next Generation, czyli nastêpna generacja
-skryptu adduser. S³u¿y on do zak³adania kont u¿ytkownikom w systemach
-uniksowych. Przede wszystkim u¿yteczny dla administratorów, którzy
-tworz± du¿o kont o powtarzaj±cych siê w³a¶ciwo¶ciach. Jest tak¿e
-napisany w perlu, ale zosta³ zaprojektowany aby by³ bardziej
-elastyczny, posiada³ wiêksze mo¿liwo¶ci konfiguracji oraz by³
+%description -l pl.UTF-8
+AddUser-NG oznacza AddUser Next Generation, czyli nastÄ™pna generacja
+skryptu adduser. SÅ‚uÅ¼y on do zakÅ‚adania kont uÅ¼ytkownikom w systemach
+uniksowych. Przede wszystkim uÅ¼yteczny dla administratorÃ³w, ktÃ³rzy
+tworzÄ… duÅ¼o kont o powtarzajÄ…cych siÄ™ wÅ‚aÅ›ciwoÅ›ciach. Jest takÅ¼e
+napisany w perlu, ale zostaÅ‚ zaprojektowany aby byÅ‚ bardziej
+elastyczny, posiadaÅ‚ wiÄ™ksze moÅ¼liwoÅ›ci konfiguracji oraz byÅ‚
 modularny:
-- posiada wtyczki do administracji u¿ytkownikami oraz grupami,
-- posiada ró¿ne interfejsy u¿ytkownika (UI),
-- posiada dobr± dokumentacjê (równie¿ na temat jak pisaæ w³asne
+- posiada wtyczki do administracji uÅ¼ytkownikami oraz grupami,
+- posiada rÃ³Å¼ne interfejsy uÅ¼ytkownika (UI),
+- posiada dobrÄ… dokumentacjÄ™ (rÃ³wnieÅ¼ na temat jak pisaÄ‡ wÅ‚asne
   wtyczki).
 
 %prep
