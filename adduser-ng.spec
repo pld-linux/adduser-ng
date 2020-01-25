@@ -1,4 +1,3 @@
-%include	/usr/lib/rpm/macros.perl
 Summary:	AddUser-NG for UNIX
 Summary(pl.UTF-8):	AddUser-NG dla systemów UNIX
 Name:		adduser-ng
